@@ -1,27 +1,27 @@
 /*
- * @lc app=leetcode id=26 lang=javascript
+ * @lc app=leetcode id=27 lang=javascript
  *
- * [26] Remove Duplicates from Sorted Array
+ * [27] Remove Element
  */
 
 // @lc code=start
 /**
  * @param {number[]} nums
+ * @param {number} val
  * @return {number}
  */
-var removeDuplicates = function (nums) {
+var removeElement = function (nums, val) {
   let duplicatedItemsCount = 0;
-  for (let i = 1, curVal = nums[0]; i < nums.length; i += 1) {
-    if (nums[i] === curVal) {
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === val) {
       duplicatedItemsCount += 1;
     } else {
       nums[i - duplicatedItemsCount] = nums[i];
-      curVal = nums[i];
     }
   }
 
   return nums.length - duplicatedItemsCount;
 };
 
-module.exports = removeDuplicates;
+module.exports = removeElement;
 // @lc code=end
