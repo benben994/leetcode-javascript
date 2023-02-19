@@ -11,7 +11,16 @@
  * @return {number[]}
  */
 var intersection = function (nums1, nums2) {
-  return nums1.filter((num) => nums2.includes(num)).filter((num, i, self) => self.indexOf(num) === i);
+  let results = [];
+  for (let i = 0; i < nums1.length; i++) {
+    const num1 = nums1[i];
+    for (let j = 0; i < nums2.length; j++) {
+      const num2 = nums2[j];
+      if (num1 === num2) {
+        results.push(num1);
+      }
+    }
+  }
 };
 
 module.exports = intersection;
