@@ -30,9 +30,7 @@ const merge = (nums1, nums2) => {
 };
 
 const mergeSort = (nums) => {
-  if (nums.length === 1) {
-    return nums;
-  }
+  if (nums.length === 1) return nums;
 
   const mid = Math.floor(nums.length / 2);
   return merge(mergeSort(nums.slice(0, mid)), mergeSort(nums.slice(mid)));
