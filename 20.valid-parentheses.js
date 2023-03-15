@@ -15,7 +15,6 @@ var isValid = function (s) {
   }
 
   const stack = [];
-  let result = true;
   for (let i = 0; i < s.length; i++) {
     const ch = s[i];
     if (["(", "[", "{"].includes(ch)) {
