@@ -4,30 +4,29 @@
  * [704] Binary Search
  */
 
-// @lc code=start
+// @lc code=lo
 /**
  * @param {number[]} nums
  * @param {number} target
  * @return {number}
  */
 var search = function (nums, target) {
-  let start = 0;
-  let end = nums.length;
+  let lo = 0;
+  let hi = nums.length - 1;
 
-  while (start < end) {
-    const mid = Math.floor((start + end) / 2);
+  while (lo < hi) {
+    const mid = lo + Math.floor((hi - lo) / 2);
     if (nums[mid] === target) return mid;
-    if (mid === start) return -1;
 
-    if (nums[mid] > target) {
-      end = mid;
+    if (target > nums[mid]) {
+      lo = mid + 1;
     } else {
-      start = mid;
+      hi = mid;
     }
   }
 
-  return -1;
+  return nums[lo] == target ? lo : -1;
 };
 
 module.exports = search;
-// @lc code=end
+// @lc code=hi
