@@ -10,7 +10,8 @@
  * @param {number[]} newInterval
  * @return {number[][]}
  */
-var insert = function (intervals, newInterval) {
+
+var insert_v1 = function (intervals, newInterval) {
   let leftIntervals = [];
   let rightIntervals = [];
   let start = newInterval[0];
@@ -31,5 +32,32 @@ var insert = function (intervals, newInterval) {
   }
 
   return [...leftIntervals, [start, end], ...rightIntervals];
+};
+
+var insert = function (intervals, newInterval) {
+  if (!intervals.length) return [newInterval];
+
+  let results = [];
+  let curInterval = newInterval;
+
+  for (let i = 0; i < intervals.length; i++) {
+    if (curInterval[1] < intervals[i][0]) {
+      results.push(curInterval, ...intervals.slice(i));
+      return results;
+    }
+
+    if (curInterval[0] > intervals[i][1]) {
+      results.push(intervals[i]);
+    } else {
+      curInterval = [
+        Math.min(curInterval[0], intervals[i][0]),
+        Math.max(curInterval[1], intervals[i][1]),
+      ];
+    }
+  }
+
+  results.push(curInterval);
+
+  return results;
 };
 // @lc code=end
